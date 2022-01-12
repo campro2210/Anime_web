@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/69.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.js"
+        integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="app">
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <div class="navbar-branch" title="Home">
+                        <a style="font-size: 25px;color: while;" class="navbar-brand" href="/admin">
+                            <img src="./img/Icon.PNG" style="width: 80px;height: 80px;border-radius: 50%;"
+                                alt="Img branch">
+                            <span style="vertical-align: -10px; font-size: 50px;font-weight: bolder;">M</span>Book
+                        </a>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="f-row align-items-center">
+                            <div style="flex: 90%;">
+                                <form>
+                                    <div id="search-n" class="container-fluid" style="display: flex;">
+                                        <input id="name-s" type="text" class="form-control txt-s"
+                                            placeholder="Search book..">
+                                        <button id="submit-search" title="Search"
+                                            class="btn btn-s btn-outline-primary">Search</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div title="log out" style="flex: 10%;">
+                                <a class="btn btn-danger" onclick="logout()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-bar-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5z"/>
+                                      </svg>
+                                    <span style="vertical-align: 5px;text-decoration: underline; font-size: 20px;">Log Out</span>                            
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="menu">
+            <div class="menu-bar">
+                <a class="navbar-brand items-m left" href="/admin">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-house-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                        <path fill-rule="evenodd"
+                            d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+                    </svg>
+                    <span class="txt-m">Home</span>
+                </a>
+                <a class="btn navbar-brand items-m left" data-toggle="modal" data-target="#myModal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-file-earmark-plus-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM8.5 7v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 1 0z" />
+                    </svg>
+                    <span class="txt-m">Add</span>
+                </a>
+                <a class="navbar-brand items-m right" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                    </svg>
+                    <span class="txt-m">About</span>
+                </a>
+                <a class="navbar-brand items-m right" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-gear-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
+                    </svg>
+                    <span class="txt-m">Setting</span>
+                </a>
+                <a id="trash" class="navbar-brand items-m right" href="/admin/trash">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-trash-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                    </svg>
+                    <span class="txt-m">Trash</span>
+                    <span id="total-d" style="color: red;">(<%= totalDel%>)</span>
+                </a>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="c-dl">
+                <div style="flex: 20%;">
+                    <div class="container-fluid phone-c text-center">
+                        <button class="btn btn-ad-se" type="button" data-toggle="collapse"
+                            data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+                            Category
+                        </button>
+                        <div class="collapse show" id="collapseExample1">
+                            <ul id="myMenu">
+                                <li><a>Ngôn Tình</a></li>
+                                <li><a>Kiếm Hiệp</a></li>
+                                <li><a>Việt Nam</a></li>
+                                <li><a>Xuyên Không</a></li>
+                                <li><a>Lịch Sử</a></li>
+                                <li><a>Tâm Lý</a></li>
+                                <li><a>Hài Hước</a></li>
+                                <li><a>Thám Hiểm</a></li>
+                                <li><a>Phương Tây</a></li>
+                                <li><a>Khác</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div style="flex: 80%">
+                    <form id="Form-Check" onsubmit="return false">
+                        <div class="bg-form">
+                            <div class="left-f">
+                                <div style="width: 120px; margin-left: -15px;" class="form-check">
+                                    <input title="Select All" id="check-all" class="form-check-input larger"
+                                        type="checkbox">
+                                    <label for="check-all" class="form-check-lable" style="padding-left: 25px;">Check
+                                        All</label>
+                                </div>
+                            </div>
+                            <select id="method" class="form-control form-control-sm left-f slt-w" name="action">
+                                <option value="">--Action--</option>
+                                <option value="DELETE">Delete</option>
+                            </select>
+                            <button onclick="OptionAll()" id="submit" style="width: 50px;margin-top: -5px;"
+                                class="btn btn-primary btn-sm option-btn c-btn left-f" disabled>Go</button>
+                            <div class="right">
+                                <a id="total" style="color: blue;">Total : <%= total%></a>
+                            </div>    
+                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr style="background-color: rgba(110, 98, 98, 0.568);">
+                                    <th scope="col"></th>
+                                    <th scope="col">Name book</th>
+                                    <th class="phone-c" scope="col">Author</th>
+                                    <th class="phone-c" scope="col">Create time</th>
+                                    <th class="text-center" scope="col" style="width: 180px;">Option</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%var i=0 %>
+                                    <% result.forEach(function(a) { %>
+                                        <tr id="<%= a._id %>" onclick="selectRow(this)">
+                                            <td><input name="bookIds" class="form-check-input larger" type="checkbox"
+                                                    value="<%= a._id %>" onclick="offCheck(this)"></td>
+                                            <td><label>
+                                                    <%= a.name %>
+                                                </label></td>
+                                            <td class="phone-c">
+                                                <%= a.author %>
+                                            </td>
+                                            <td class="phone-c date-c">
+                                                <%= a.createdAt %>
+                                            </td>
+                                            <td style="text-align: inherit;">
+                                                <a title="detail" onclick="detail()" class="btn btn-o"
+                                                    style="color: green;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                        fill="currentColor" class="ct-ic bi bi-eye-fill"
+                                                        viewBox="0 0 16 16">
+                                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                                        <path
+                                                            d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                                    </svg>
+                                                </a>
+                                                <a onclick="optUpdate(this.name)" title="update" class="btn btn-o" name="<%= a._id %>"
+                                                    style="color: blue;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                        fill="currentColor" class="ct-ic bi bi-tools"
+                                                        viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z" />
+                                                    </svg>
+                                                </a>
+                                                <a onclick="delBook(this.name)" title="delete" name="<%= a._id %>"
+                                                    id="Items-del" class="btn btn-o" style="color: red;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                        fill="currentColor" class="ct-ic bi bi-trash"
+                                                        viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                                    </svg>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <% }); %>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <div>
+            </div>
+        </div>
+    </div>
+    <!-- Form Update-->
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content brg-fromcre">
+                <div class="modal-header">
+                    <h1><b>Update Book</b></h1>
+                    <button type="button" class="close left" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body" style="width: 100%;">
+                    <form onsubmit="return false" id="fUpdate">
+                        <div class="form-group">
+                            <label for="name">Book name</label>
+                            <input type="text" class="form-control" id="name" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Type</label>
+                            <input type="text" class="form-control" id="type" name="type">
+                        </div>
+                        <div class="form-group">
+                            <label for="author">Author</label>
+                            <input type="text" class="form-control" id="author" name="author">
+                        </div>
+                        <div class="form-group">
+                            <label for="linkImg">Link Image</label>
+                            <input type="text" class="form-control" id="linkImg" name="linkImg">
+                        </div>
+                        <div class="form-group">
+                            <label for="linkBook">Link Book</label>
+                            <input type="text" class="form-control" id="linkBook" name="linkBook">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <input type="hidden" id="description" name="description" >
+                            <textarea class="form-control" id="dcription" rows="4"></textarea>
+                        </div>
+                        <div class="form-group container-fluid text-center">
+                            <button onclick="Update()" class="btn btn-primary">Update Book</button>
+                            <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- //Modal content-->
+        </div>
+    </div>
+    <!-- Form Create New -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content brg-fromcre">
+                <div class="modal-header">
+                    <h1><b>Create Book</b></h1>
+                    <button type="button" class="close left" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body" style="width: 100%;">
+                    <form onsubmit="return false" id="fCreate">
+                        <div class="form-group">
+                            <label for="name">Book name</label>
+                            <input type="text" class="form-control" id="name" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Type</label>
+                            <input type="text" class="form-control" id="type" name="type">
+                        </div>
+                        <div class="form-group">
+                            <label for="author">Author</label>
+                            <input type="text" class="form-control" id="author" name="author">
+                        </div>
+                        <div class="form-group">
+                            <label for="linkImg">Link Image</label>
+                            <input type="text" class="form-control" id="linkImg" name="linkImg">
+                        </div>
+                        <div class="form-group">
+                            <label for="linkBook">Link Book</label>
+                            <input type="text" class="form-control" id="linkBook" name="linkBook">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <input type="hidden" id="description" name="description" >
+                            <textarea class="form-control" id="dcription" rows="4"></textarea>
+                        </div>
+                        <div class="form-group container-fluid text-center">
+                            <button onclick="Create()" class="btn btn-primary">Add Book</button>
+                            <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- //Modal content-->
+        </div>
+    </div>
+    <form id="logout" action="/logout?_method=DELETE" method="POST"></form>
+    <script>
+        function logout(){
+            $('#logout').submit();
+        }
+    </script>
+    <script src="/js/69.js"></script>
+    <script src="/js/79.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

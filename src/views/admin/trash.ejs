@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/69.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.js"
+        integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+    <style>
+        header {
+            display: inline-flex;
+            height: 100px;
+            margin: auto;
+        }
+
+        .btn-o1:hover {
+            background-color: rgba(76, 167, 88, 0.185);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container app">
+        <header class="f-row mt-4">
+            <a class="navbar-brand items-m left" href="/admin">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
+                    class="bi bi-house-fill" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                    <path fill-rule="evenodd"
+                        d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+                </svg>
+                <span style="font-weight: bolder;vertical-align: 10px;font-size: 30px;">Home</span>
+            </a>
+            <a class="navbar-brand items-m left" style="margin-top: 10px;" href="/admin/trash">
+                <span style="font-size: 25px;">> Recycle Bin</span>
+            </a>
+        </header>
+        <div class="container-fluid">
+            <form action="/admin/control-actionForm" method="POST">
+                <div class="bg-form">
+                    <div class="left-f">
+                        <div style="width: 120px; margin-left: -15px;" class="form-check">
+                            <input title="Select All" id="check-all" class="form-check-input larger" type="checkbox">
+                            <label for="check-all" class="form-check-lable" style="padding-left: 25px;">Check
+                                All</label>
+                        </div>
+                    </div>
+                    <select class="form-control form-control-sm left-f slt-w" name="action" required>
+                        <option value="">--Action--</option>
+                        <option value="DELETE-ALL">Delete</option>
+                        <option value="RESTORE">Restore</option>
+                    </select>
+                    <button style="width: 50px;margin-top: -5px;" class="btn btn-primary btn-sm option-btn c-btn left-f"
+                        disabled>Go</button>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr style="background-color: rgba(110, 98, 98, 0.568);">
+                            <th scope="col"></th>
+                            <th scope="col">Name book</th>
+                            <th class="phone-c" scope="col">Author</th>
+                            <th class="phone-c" scope="col">Create time</th>
+                            <th class="text-center" scope="col">Option</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%var i=0 %>
+                            <% result.forEach(function(a) { %>
+                                <tr onclick="selectRow(this)">
+                                    <td><input name="bookIds" class="form-check-input larger" type="checkbox"
+                                            value="<%= a._id %>" onclick="offCheck(this)"></td>
+                                    <td><label>
+                                            <%= a.name %>
+                                        </label></td>
+                                    <td class="phone-c">
+                                        <%= a.author %>
+                                    </td>
+                                    <td class="phone-c">
+                                        <%= a.createdAt %>
+                                    </td>
+                                    <td class="text-center" scope="col" style="width: 180px;">
+                                        <a title="restore" onclick="restBook(this.name)" name="<%= a._id %>"
+                                            id="Items-del" class="btn btn-o" style="color: green;">Restore</a>
+                                        <a title="delete" href="" class="btn btn-o" data-toggle="modal"
+                                            data-id="<%= a._id %>" data-target="#delete-course-modal"
+                                            style="color: red;">Delete</a>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                    </tbody>
+                </table>
+            </form>
+            <div class="text-center">
+                <a>
+                    <%if(result.length<1){%>----empty----<%};%>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="delete-course-modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" style="color: red;">Note Delete Book?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="color: black;text-align: center;">
+                    <h5>You really want to delete ?</h5>
+                    <p><b>Note: (select delete) this is a permanent delete that cannot be restored !!!</b></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="btn-delete-course" type="button" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form id="n" action="" method="POST"></form>
+    <form name="delete-course-form" method="POST"></form>
+    <script>
+        // function delforBook(name){
+        //     $('#n').attr('action', '/admin/delete/'+name+'/force?_method=DELETE');
+        //     $('#n').submit();
+        // }
+        function restBook(name) {
+            $('#n').attr('action', '/admin/trash/restore/' + name + '?_method=PATCH');
+            $('#n').submit();
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            var courseId;
+            var deleteForm = document.forms['delete-course-form'];
+            var btnDeleteCourse = document.getElementById('btn-delete-course');
+            // When dialog confirm clicked
+            $('#delete-course-modal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                courseId = button.data('id');
+            });
+
+            // When delete course btn clicked
+            btnDeleteCourse.onclick = function () {
+                deleteForm.action = '/admin/delete/' + courseId + '/force?_method=DELETE';
+                deleteForm.submit();
+            }
+        });
+    </script>
+    <script src="/js/69.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
